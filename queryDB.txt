@@ -1,0 +1,79 @@
+SELECT * FROM clientes -- todos 
+
+EXCEPT -- exceto aqueles
+
+SELECT clientes. * FROM clientes -- só os que tem conta
+JOIN conta ON (clientes.cod_cliente = conta.cod_cliente)
+
+/*
+SELECT 
+	AVG (historico_movimentacao.val_movimentacao),
+	clientes.nom_cliente
+FROM historico_movimentacao
+JOIN conta ON (historico_movimentacao.num_conta = conta.num_conta)
+JOIN clientes ON (conta.cod_cliente = clientes.COD_CLIENTE)
+GROUP BY clientes.nom_cliente
+order BY AVG (historico_movimentacao.val_movimentacao) DESC
+*/
+
+
+-- qual a media de movimento por cliente -- maior pra menor
+/*
+SELECT 
+	AVG(historico_movimentacao.val_movimentacao), -- media
+	SUM(historico_movimentacao.val_movimentacao), -- soma
+	COUNT(*)
+FROM historico_movimentacao 
+*/
+
+-- NUNCA DAR ESPAÇO 
+	
+
+/*
+SELECT 
+	clientes.NOM_CLIENTE,
+	clientes.NUM_CPF_CNPJ,
+	conta.NUM_CONTA,
+	agencia.NOM_AGENCIA,
+	conta.VAL_SALDO
+FROM conta
+INNER JOIN clientes ON ( conta.cod_cliente = clientes.cod_cliente )
+JOIN agencia ON ( conta.NUM_AGENCIA = agencia.NUM_AGENCIA )
+*/
+
+
+/*SELECT * FROM conta 
+WHERE conta.COD_CLIENTE = 2 */
+
+/*
+TESTAR
+
+SELECT 
+	historico_movimentacao.cod_historico_movimentacao,
+	historico_movimentacao.val_movimentacao,
+	historico_movimentacao.dta_movimentacao,
+	tipo_movimentacao.DES_TIPO_MOVIMENTACAO
+FROM historico_movimentacao
+JOIN tipo_movimentacao ON 
+	(historico_movimentacao.cod_tipo_movimentacao = tipo_movimentacao.DES_TIPO_MOVIMENTACAO)
+WHERE historico_movimentacao.num_conta = 2
+
+
+SELECT * FROM clientes 
+ORDER BY clientes.cod_categoria_cliente, clientes.nom_cliente desc
+-asc é pra ser crescente, mas é padrao. o Desc é descrescente-
+
+DA PRA FAZER APELIDO  
+
+SELECT * FROM clientes cli
+ORDER BY cli.cod_categoria_cliente, cli.nom_cliente DESC
+
+
+PARA FAZER A CONTAGEM E AGRUPAR
+
+SELECT 
+	COUNT(*),clientes.COD_CATEGORIA_CLIENTE
+FROM clientes 
+GROUP BY clientes.cod_categoria_cliente 
+*/
+
